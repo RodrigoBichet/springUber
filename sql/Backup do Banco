@@ -1,0 +1,42 @@
+create table motorista
+(
+    id         bigint auto_increment
+        primary key,
+    nome       varchar(255) not null,
+    email      varchar(255) not null,
+    telefone   varchar(255) not null
+);
+
+create table usuario
+(
+    id       bigint auto_increment primary key,
+    nome     varchar(255) not null,
+    email    varchar(255) not null,
+    telefone varchar(255) not null
+);
+
+create table corrida
+(
+    id                 bigint auto_increment primary key,
+    tipo_pagamento     varchar(255)  not null,
+    detalhes_pagamento varchar(255) not null,
+    data_inicio        date         not null,
+    preco              double       not null,
+    id_motorista       bigint       not null,
+    id_usuario         bigint       not null,
+    FOREIGN KEY (id_usuario) REFERENCES usuario(id),
+    FOREIGN key (id_motorista) REFERENCES motorista(id)
+
+);
+
+
+
+create table veiculo
+(
+    id   bigint auto_increment primary key,
+    tipo           varchar(255) not null,
+    placa          varchar(255) not null,
+    ano_fabricacao date        not null,
+    id_motorista bigint       not null,
+    FOREIGN key (id_motorista) REFERENCES motorista(id)
+);
