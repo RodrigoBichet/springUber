@@ -37,12 +37,14 @@ public class Motorista {
 
     @Override
     public String toString() {
-        return "Motorista{" +
+
+        return "\nMotorista{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", telefone='" + telefone + '\'' +
-                ", idVeiculo=" + idVeiculo +
+                ", Veiculo=" + idVeiculo +
                 '}';
+
     }
 }

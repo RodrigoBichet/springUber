@@ -30,12 +30,7 @@ public class Corrida {
     @Basic
     @Column(name = "preco", nullable = false, precision = 0)
     private double preco;
-//    @Basic
-//    @Column(name = "id_usuario", nullable = false)
-//    private long idUsuario;
-//    @Basic
-//    @Column(name = "id_motorista", nullable = false)
-//    private long idMotorista;
+
     @ManyToOne
     @JoinColumn(name = "id_motorista", referencedColumnName = "id", nullable = false)
     private Motorista motoristaByIdMotorista;
@@ -45,7 +40,7 @@ public class Corrida {
 
     @Override
     public String toString() {
-        return "Corrida{" +
+        return "\nCorrida{" +
                 "id=" + id +
                 ", tipoPagamento='" + tipoPagamento + '\'' +
                 ", detalhesPagamento='" + detalhesPagamento + '\'' +

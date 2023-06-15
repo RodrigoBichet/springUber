@@ -49,6 +49,7 @@ public class MotoristaService {
             db.setNome(motorista.getNome());
             db.setEmail(motorista.getEmail());
             db.setTelefone(motorista.getTelefone());
+            db.setIdVeiculo(motorista.getIdVeiculo());
             rep.save(db);
             return db;
         } else {

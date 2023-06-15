@@ -1,8 +1,5 @@
 package br.edu.ifsul.cstsi.springuber.corrida;
 
-import br.edu.ifsul.cstsi.springuber.motorista.Motorista;
-import br.edu.ifsul.cstsi.springuber.usuario.Usuario;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;

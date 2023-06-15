@@ -31,7 +31,7 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" +
+        return "\nUsuario{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +

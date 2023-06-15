@@ -138,7 +138,6 @@ public class UsuarioController {
                     System.out.print("Excluir este usuario? (0-sim/1-não) ");
                     if (input.nextInt() == 0) {
                         input.nextLine();
-                        input.nextLine();
                         UsuarioService.delete(usuario.getId());
                         System.out.println("usuario excluído com sucesso:" + usuario);
                     }

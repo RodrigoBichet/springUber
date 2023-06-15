@@ -60,7 +60,6 @@ public class MotoristaController {
 
         System.out.print("Digite o telefone do motorista: ");
         motorista.setTelefone(input.nextLine());
-        //motorista.setId(1L);
 
         System.out.println("motorista salvo com sucesso:" + MotoristaService.insert(motorista));
     }
@@ -96,7 +95,7 @@ public class MotoristaController {
                         System.out.println("Digite o novo EMAIL do motorista: ");
                         motorista.setEmail(input.nextLine());
 
-
+                    }
                         System.out.println("Telefone: " + motorista.getTelefone());
                         System.out.print("Alterar? (0-sim/1-não) ");
                         if (input.nextInt() == 0) {
@@ -104,6 +103,7 @@ public class MotoristaController {
                             System.out.println("Digite o novo TELEFONE do motorista: ");
                             motorista.setTelefone(input.nextLine());
                         }
+
 
                         if (MotoristaService.update(motorista) != null) {
                             System.out.println("Motorista atualizado com sucesso. " + MotoristaService.getMotoristaByIdMotorista(motorista.getId()));
@@ -114,10 +114,10 @@ public class MotoristaController {
                         opcao = 1;
                     }
                 }
-            }
+            }while (opcao != 0) ;
 
-        } while (opcao != 0) ;
-    }
+        }
+
 
     //opção 3
     private static void excluir() {
@@ -139,7 +139,7 @@ public class MotoristaController {
                     System.out.print("Excluir este motorista? (0-sim/1-não) ");
                     if (input.nextInt() == 0) {
                         input.nextLine();
-                        input.nextLine();
+
                         MotoristaService.delete(motorista.getId());
                         System.out.println("motorista excluído com sucesso:" + motorista);
                     }

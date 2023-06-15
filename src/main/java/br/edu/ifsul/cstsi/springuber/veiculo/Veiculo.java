@@ -26,16 +26,14 @@ public class Veiculo {
     @Basic
     @Column(name = "ano_fabricacao", nullable = false)
     private LocalDate anoFabricacao;
-//    @Basic
-//    @Column(name = "id_motorista", nullable = false)
-//    private long idMotorista;
+
     @ManyToOne
     @JoinColumn(name = "id_motorista", referencedColumnName = "id", nullable = false)
     private Motorista motoristaByIdMotorista;
 
     @Override
     public String toString() {
-        return "Veiculo{" +
+        return "\nVeiculo{" +
                 "id=" + id +
                 ", tipo='" + tipo + '\'' +
                 ", placa='" + placa + '\'' +

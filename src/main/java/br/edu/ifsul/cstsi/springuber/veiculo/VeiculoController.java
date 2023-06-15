@@ -30,7 +30,7 @@ public class VeiculoController {
     
                         1. Inserir novo veiculo
                         2. Atualizar um veiculo
-                        3. Excluir um veiculo 
+                        3. Excluir um veiculo
                         4. Listar todos os veiculos
                         5. Buscar veiculo pelo código
                         6. Buscar veiculo pelo tipo
@@ -74,9 +74,11 @@ public class VeiculoController {
         System.out.print("Digite o motorista(id) dono do veiculo: ");
         Motorista motorista = MotoristaService.getMotoristaByIdMotorista(input.nextLong());
         veiculo.setMotoristaByIdMotorista(motorista);
-        //veiculo.setId(1L);
-
         System.out.println("veiculo salvo com sucesso:" + VeiculoService.insert(veiculo));
+        //update do veiculo vinculado ao motorista
+        motorista.setIdVeiculo(veiculo.getId());
+        MotoristaService.update(motorista);
+
     }
 
     //opção 2
@@ -109,7 +111,7 @@ public class VeiculoController {
                         input.nextLine();
                         System.out.println("Digite a nova PLACA do veiculo: ");
                         veiculo.setPlaca(input.nextLine());
-
+                    }
 
                         System.out.println("Ano de Fabricacao: " + veiculo.getAnoFabricacao());
                         System.out.print("Alterar? (0-sim/1-não) ");
@@ -120,6 +122,27 @@ public class VeiculoController {
                             veiculo.setAnoFabricacao(AnoFabricacao);
                         }
 
+                    System.out.println("Motorista do Veiculo: " + veiculo.getMotoristaByIdMotorista());
+                    System.out.print("Alterar? (0-sim/1-não) ");
+                    if (input.nextInt() == 0) {
+                        input.nextLine();
+
+                        //mostrar motoristas disponíveis no banco
+                        System.out.println("Motoristas cadastrados no banco: " + MotoristaService.getMotoristas());
+                        System.out.print("Digite o novo motorista(id) dono do veiculo: ");
+                        Motorista motorista = MotoristaService.getMotoristaByIdMotorista(input.nextLong());
+                        //setar o veiculo para null
+                        Motorista motorista2 = veiculo.getMotoristaByIdMotorista();
+                        motorista2.setIdVeiculo(0L);
+
+                        veiculo.setMotoristaByIdMotorista(motorista);
+                        System.out.println("veiculo atualizado com sucesso:" + VeiculoService.insert(veiculo));
+                        //update do veiculo vinculado ao motorista
+                        motorista.setIdVeiculo(veiculo.getId());
+                        MotoristaService.update(motorista);
+                        MotoristaService.update(motorista2);
+                    }
+
                         if (VeiculoService.update(veiculo) != null) {
                             System.out.println("Veiculo atualizado com sucesso. " + VeiculoService.getVeiculoByIdVeiculo(veiculo.getId()));
                         } else {
@@ -129,10 +152,10 @@ public class VeiculoController {
                         opcao = 1;
                     }
                 }
-            }
+            }while (opcao != 0) ;
 
-        } while (opcao != 0) ;
-    }
+        }
+
 
     //opção 3
     private static void excluir() {
@@ -154,7 +177,11 @@ public class VeiculoController {
                     System.out.print("Excluir este veiculo? (0-sim/1-não) ");
                     if (input.nextInt() == 0) {
                         input.nextLine();
-                        input.nextLine();
+
+                        Motorista motorista2 = veiculo.getMotoristaByIdMotorista();
+                        motorista2.setIdVeiculo(0L);
+                        MotoristaService.update(motorista2);
+
                         VeiculoService.delete(veiculo.getId());
                         System.out.println("veiculo excluído com sucesso:" + veiculo);
                     }

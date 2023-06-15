@@ -1,7 +1,6 @@
 package br.edu.ifsul.cstsi.springuber.corrida;
 
-import br.edu.ifsul.cstsi.springuber.motorista.Motorista;
-import br.edu.ifsul.cstsi.springuber.usuario.Usuario;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

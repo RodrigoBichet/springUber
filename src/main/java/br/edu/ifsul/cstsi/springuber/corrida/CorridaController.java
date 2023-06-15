@@ -6,7 +6,6 @@ import br.edu.ifsul.cstsi.springuber.usuario.Usuario;
 import br.edu.ifsul.cstsi.springuber.usuario.UsuarioService;
 import br.edu.ifsul.cstsi.springuber.veiculo.VeiculoService;
 
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
@@ -94,9 +93,9 @@ public class CorridaController {
         System.out.print("Digite o usuario(id) da corrida: ");
         Usuario usuario = UsuarioService.getUsuarioByIdUsuario(input.nextLong());
         corrida.setUsuarioByIdUsuario(usuario);
-        //corrida.setId(1L);
 
         System.out.println("corrida salva com sucesso:" + CorridaService.insert(corrida));
+
     }
 
     //opção 2
@@ -213,7 +212,7 @@ public class CorridaController {
                     System.out.print("Excluir esta corrida? (0-sim/1-não) ");
                     if (input.nextInt() == 0) {
                         input.nextLine();
-                        input.nextLine();
+
                         CorridaService.delete(corrida.getId());
                         System.out.println("corrida excluída com sucesso:" + corrida);
                     }
